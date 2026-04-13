@@ -1,0 +1,42 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:not",
+      "value": {
+        "type": "neoforge:mod_loaded",
+        "modid": "create"
+      }
+    }
+  ],
+  "type": "createcybernetics:engineering_table",
+  "accept_mirrored": true,
+  "category": "misc",
+
+  "key": {
+    "D": {
+      "item": "minecraft:dispenser"
+    },
+    "P": {
+      "item": "createcybernetics:component_plating"
+    },
+    "B": {
+      "item": "createcybernetics:component_storage"
+    },
+    "C": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+
+  "pattern": [
+    "   PD",
+    "  PCP",
+    " PBP ",
+    "PCP  ",
+    "PP   "
+  ],
+
+  "result": {
+    "count": 1,
+    "id": "createcybernetics:lungsupgrades_oxygen"
+  }
+}

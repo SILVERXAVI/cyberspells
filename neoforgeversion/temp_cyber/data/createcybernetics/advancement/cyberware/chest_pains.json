@@ -1,0 +1,28 @@
+{
+  "parent": "createcybernetics:cyberware/thoughtless",
+  "criteria": {
+    "chest_pains": {
+      "trigger": "createcybernetics:chest_pains"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "createcybernetics:textures/block/titanium_block.png",
+    "description": {
+      "translate": "advancement.chest_pains.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "createcybernetics:bodypart_heart"
+    },
+    "title": {
+      "translate": "advancement.chest_pains"
+    }
+  },
+  "requirements": [
+    [
+      "chest_pains"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

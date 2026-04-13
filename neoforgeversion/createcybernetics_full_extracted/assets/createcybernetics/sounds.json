@@ -1,0 +1,82 @@
+{
+  "cyberpsycho": {
+    "sounds": [
+      {
+        "name": "createcybernetics:cyberpsycho",
+        "stream": true
+      }
+    ]
+  },
+  "neon_overlords": {
+    "sounds": [
+      {
+        "name": "createcybernetics:neon_overlords",
+        "stream": true
+      }
+    ]
+  },
+  "neurohack": {
+    "sounds": [
+      {
+        "name": "createcybernetics:neurohack",
+        "stream": true
+      }
+    ]
+  },
+  "the_grid": {
+    "sounds": [
+      {
+        "name": "createcybernetics:the_grid",
+        "stream": true
+      }
+    ]
+  },
+  "metal_detector_beeps": {
+    "subtitle": "sounds.createcybernetics.metal_detector_beeps",
+    "sounds": [
+      {
+        "name": "createcybernetics:metal_detector_beeps"
+      }
+    ]
+  },
+  "retractable_claws_snikt": {
+    "subtitle": "sounds.createcybernetics.retractable_claws_snikt",
+    "sounds": [
+      {
+        "name": "createcybernetics:retractable_claws_snikt"
+      }
+    ]
+  },
+  "sandy_startup": {
+    "subtitle": "sounds.createcybernetics.sandy_startup",
+    "sounds": [
+      {
+        "name": "createcybernetics:sandy_startup"
+      }
+    ]
+  },
+  "metal_crushing": {
+    "subtitle": "sounds.createcybernetics.metal_crushing",
+    "sounds": [
+      {
+        "name": "createcybernetics:metal_crushing"
+      }
+    ]
+  },
+  "glitchy": {
+    "subtitle": "sounds.createcybernetics.glitchy",
+    "sounds": [
+      {"name": "createcybernetics:glitch1"},
+      {"name": "createcybernetics:glitch2"},
+      {"name": "createcybernetics:glitch3"},
+      {"name": "createcybernetics:glitch4"},
+      {"name": "createcybernetics:glitch5"},
+      {"name": "createcybernetics:glitch6"},
+      {"name": "createcybernetics:glitch7"},
+      {"name": "createcybernetics:glitch8"},
+      {"name": "createcybernetics:glitch9"},
+      {"name": "createcybernetics:glitch10"},
+      {"name": "createcybernetics:glitch11"}
+    ]
+  }
+}

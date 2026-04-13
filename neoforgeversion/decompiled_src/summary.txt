@@ -1,0 +1,9 @@
+Summary for libs\createcybernetics-0.3.8b-neoforge-1.21.1.jar
+Decompiled with CFR 0.152
+
+
+com.perigrine3.createcybernetics.common.surgery.SurgeryController
+----------------------------
+
+forceRemoveDependents(net.minecraft.world.entity.player.Player com.perigrine3.createcybernetics.block.entity.RobosurgeonBlockEntity com.perigrine3.createcybernetics.common.capabilities.PlayerCyberwareData boolean[] java.util.Set<net.minecraft.world.item.Item> java.util.List<com.perigrine3.createcybernetics.event.custom.CyberwareSurgeryEvent$Change> )
+  Could not resolve type clashes

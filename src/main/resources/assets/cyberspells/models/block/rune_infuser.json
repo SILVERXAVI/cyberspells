@@ -1,0 +1,6 @@
+{
+    "parent": "block/cube_all",
+    "textures": {
+        "all": "cyberspells:block/rune_infuser"
+    }
+}

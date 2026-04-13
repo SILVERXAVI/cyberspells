@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "#S#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "irons_spellbooks:arcane_ingot"
+        },
+        "S": {
+            "item": "cyber_ware_port:robo_surgeon"
+        }    },
+    "result": {
+        "item": "cyberspells:rune_infuser",
+        "count": 1
+    }
+}

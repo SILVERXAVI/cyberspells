@@ -1,0 +1,14 @@
+{
+    "pack": {
+        "name": "cyberspells",
+        "id": "cyberspells",
+        "pack_format": 15,
+        "version": "2.0",
+        "authors": [
+            "SilverXavier"
+        ],
+        "description": "
+el add compatibility to cyberware with others mods.",
+        "license": "cyberspells"
+    }
+}

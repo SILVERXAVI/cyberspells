@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "N": {
+      "tag": "c:nuggets/iron"
+    },
+    "G": {
+      "tag": "c:glass_panes"
+    }
+  },
+  "pattern": [
+    "GGG",
+    "GNG",
+    "N N"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcybernetics:component_led"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "parent": "createcybernetics:cyberware/first_ripperdoc_visit",
+  "criteria": {
+    "cyberpsychosis": {
+      "trigger": "createcybernetics:cyberpsychosis"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "createcybernetics:textures/block/blankmachine.png",
+    "description": {
+      "translate": "advancement.cyberpsychosis.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "createcybernetics:armupgrades_crafthands"
+    },
+    "title": {
+      "translate": "advancement.cyberpsychosis"
+    }
+  },
+  "requirements": [
+    [
+      "cyberpsychosis"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,7 @@
+{
+    "asset_id": "cyberspells:rune",
+    "description": {
+        "translate": "trim_pattern.cyberspells.rune"
+    },
+    "template_item": "minecraft:iron_ingot"
+}

@@ -1,0 +1,27 @@
+{
+  "parent": "createcybernetics:cyberware/first_scavenged_cyberware",
+  "criteria": {
+    "first_cyberware": {
+      "trigger": "createcybernetics:first_cyberware"
+    }
+  },
+  "display": {
+    "background": "createcybernetics:textures/block/blankmachine.png",
+    "description": {
+      "translate": "advancement.first_cyberware.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "createcybernetics:basecyberware_leftarm"
+    },
+    "title": {
+      "translate": "advancement.first_cyberware"
+    }
+  },
+  "requirements": [
+    [
+      "first_cyberware"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

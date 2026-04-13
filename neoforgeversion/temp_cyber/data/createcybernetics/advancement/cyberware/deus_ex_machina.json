@@ -1,0 +1,28 @@
+{
+  "parent": "createcybernetics:cyberware/first_ripperdoc_visit",
+  "criteria": {
+    "deus_ex_machina": {
+      "trigger": "createcybernetics:deus_ex_machina"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "background": "createcybernetics:textures/block/blankmachine.png",
+    "description": {
+      "translate": "advancement.deus_ex_machina.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "createcybernetics:heartupgrades_defibrillator"
+    },
+    "title": {
+      "translate": "advancement.deus_ex_machina"
+    }
+  },
+  "requirements": [
+    [
+      "deus_ex_machina"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

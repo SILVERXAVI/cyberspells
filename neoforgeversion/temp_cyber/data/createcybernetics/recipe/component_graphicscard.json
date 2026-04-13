@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "T": {
+      "item": "createcybernetics:titaniumsheet"
+    },
+    "E": {
+      "item": "createcybernetics:component_led"
+    },
+    "D": {
+      "tag": "c:gems/diamond"
+    },
+    "G": {
+      "tag": "c:nuggets/gold"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "GRG",
+    "DED",
+    "TTT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcybernetics:component_graphicscard"
+  }
+}

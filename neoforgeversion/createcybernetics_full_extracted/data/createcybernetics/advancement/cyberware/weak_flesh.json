@@ -1,0 +1,27 @@
+{
+  "parent": "createcybernetics:cyberware/first_ripperdoc_visit",
+  "criteria": {
+    "weak_flesh": {
+      "trigger": "createcybernetics:weak_flesh"
+    }
+  },
+  "display": {
+    "background": "createcybernetics:textures/block/blankmachine.png",
+    "description": {
+      "translate": "advancement.weak_flesh.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "createcybernetics:skinupgrades_metalplating"
+    },
+    "title": {
+      "translate": "advancement.weak_flesh"
+    }
+  },
+  "requirements": [
+    [
+      "weak_flesh"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

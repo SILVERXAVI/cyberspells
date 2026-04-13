@@ -1,0 +1,23 @@
+{
+  "values": [
+    "createcybernetics:skinupgrades_arterialturbine",
+    "createcybernetics:skinupgrades_chromatophores",
+    "createcybernetics:skinupgrades_synthskin",
+    "createcybernetics:skinupgrades_immuno",
+    "createcybernetics:skinupgrades_faceplate",
+    "createcybernetics:skinupgrades_netheriteplating",
+    "createcybernetics:skinupgrades_solarskin",
+    "createcybernetics:skinupgrades_subdermalarmor",
+    "createcybernetics:skinupgrades_subdermalspikes",
+    "createcybernetics:skinupgrades_syntheticsetules",
+    "createcybernetics:skinupgrades_metalplating",
+    {
+      "id": "createcybernetics:skinupgrades_sweat",
+      "required": false
+    },
+    {
+      "id": "createcybernetics:skinupgrades_manaskin",
+      "required": false
+    }
+  ]
+}

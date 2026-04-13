@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "###",
+        "#S#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "irons_spellbooks:arcane_ingot"
+        },
+        "S": {
+            "item": "cyber_ware_port:cyberheart"
+        }    },
+    "result": {
+        "item": "cyberspells:rune_heart",
+        "count": 1
+    }
+}
