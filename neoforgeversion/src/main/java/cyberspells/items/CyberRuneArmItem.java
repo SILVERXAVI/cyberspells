@@ -15,7 +15,7 @@ public class CyberRuneArmItem extends CyberarmItem implements RuneHolder {
     private final String partName;
 
     public CyberRuneArmItem(Properties properties, String partName) {
-        super(properties, 0,
+        super(properties, 10,
                 partName.contains("left") ? CyberwareSlot.LARM : CyberwareSlot.RARM);
         this.partName = partName;
     }
@@ -84,7 +84,11 @@ public class CyberRuneArmItem extends CyberarmItem implements RuneHolder {
 
     @Override
     public void appendHoverText(ItemStack stack, net.minecraft.world.item.Item.TooltipContext context, List<net.minecraft.network.chat.Component> tooltipComponents, net.minecraft.world.item.TooltipFlag tooltipFlag) {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+        if (net.minecraft.client.gui.screens.Screen.hasShiftDown()) {
+            tooltipComponents.add(net.minecraft.network.chat.Component.translatable("tooltip.createcybernetics.humanity", getHumanityCost()).withStyle(net.minecraft.ChatFormatting.GOLD));
+        } else {
+            tooltipComponents.add(net.minecraft.network.chat.Component.translatable("tooltip.createcybernetics.hold_shift").withStyle(net.minecraft.ChatFormatting.DARK_GRAY));
+        }
         tooltipComponents.add(net.minecraft.network.chat.Component.translatable("tooltip.cyberspells." + partName).withStyle(net.minecraft.ChatFormatting.GRAY));
         cyberspells.logic.RuneAttributeManager.appendTooltip(stack, tooltipComponents);
     }
