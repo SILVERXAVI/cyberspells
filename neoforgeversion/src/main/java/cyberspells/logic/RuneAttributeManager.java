@@ -152,6 +152,33 @@ public class RuneAttributeManager {
                 }
         }
 
+        public static void addAttributesToMultimap(
+                        com.google.common.collect.Multimap<net.minecraft.core.Holder<Attribute>, AttributeModifier> map,
+                        String runeId, String runeIndex) {
+                Map<String, net.neoforged.neoforge.common.ModConfigSpec.DoubleValue> attributes = RUNE_TO_ATTRIBUTES.get(runeId);
+                if (attributes != null) {
+                        for (Map.Entry<String, net.neoforged.neoforge.common.ModConfigSpec.DoubleValue> entry : attributes.entrySet()) {
+                                String attributeId = entry.getKey();
+                                double value = entry.getValue().get();
+
+                                Optional<net.minecraft.core.Holder.Reference<Attribute>> attr = BuiltInRegistries.ATTRIBUTE
+                                                .getHolder(ResourceLocation.parse(attributeId));
+                                if (attr.isPresent()) {
+                                        ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(
+                                                        "cyberspells",
+                                                        "rune_" + runeIndex + "_" + attributeId.replace(":", "_"));
+
+                                        AttributeModifier.Operation operation = attributeId.contains("max_mana")
+                                                        ? AttributeModifier.Operation.ADD_VALUE
+                                                        : AttributeModifier.Operation.ADD_MULTIPLIED_BASE;
+
+                                        AttributeModifier modifier = new AttributeModifier(modifierId, value, operation);
+                                        map.put(attr.get(), modifier);
+                                }
+                        }
+                }
+        }
+
         public static void manageAttributes(Player player, ItemStack stack, String partName) {
                 if (player.level().isClientSide)
                         return;

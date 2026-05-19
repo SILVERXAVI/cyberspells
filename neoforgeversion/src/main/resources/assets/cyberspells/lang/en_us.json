@@ -6,6 +6,11 @@
     "item.cyberspells.rune_leg_left": "Cybernetic Rune Leg (Left)",
     "item.cyberspells.rune_leg_right": "Cybernetic Rune Leg (Right)",
     "item.cyberspells.rune_heart": "Cybernetic Rune Heart",
+    "item.cyberspells.cw_rune_arm_left": "Cyberware Rune Arm (Left)",
+    "item.cyberspells.cw_rune_arm_right": "Cyberware Rune Arm (Right)",
+    "item.cyberspells.cw_rune_leg_left": "Cyberware Rune Leg (Left)",
+    "item.cyberspells.cw_rune_leg_right": "Cyberware Rune Leg (Right)",
+    "item.cyberspells.cw_rune_heart": "Cyberware Rune Heart",
     "itemGroup.cyberspells_tab": "CyberSpells",
     "creativetab.cyber_addon_tab": "CyberSpells",
     "tooltip.cyberspells.rune_arm_left": "An upgrade of a mechanized arm. While it no longer allows the implementation of various upgrades, it can be included in runes using the rune infuser.",
@@ -13,5 +18,10 @@
     "tooltip.cyberspells.rune_heart": "An upgrade of a mechanized heart. While it no longer allows the implementation of multiple upgrades, it can be infused with runes using the rune infuser.",
     "tooltip.cyberspells.rune_leg_left": "An upgrade of a mechanized leg. While it no longer allows the implementation of multiple upgrades, it can be infused with runes using the rune infuser.",
     "tooltip.cyberspells.rune_leg_right": "An upgrade of a mechanized leg. While it no longer allows the implementation of multiple upgrades, it can be infused with runes using the rune infuser.",
+    "tooltip.cyberspells.cw_rune_arm_left": "An upgrade of a mechanized arm. While it no longer allows the implementation of various upgrades, it can be included in runes using the rune infuser.",
+    "tooltip.cyberspells.cw_rune_arm_right": "An upgrade of a mechanized arm. While it no longer allows the implementation of multiple upgrades, it can be infused with runes using the rune infuser.",
+    "tooltip.cyberspells.cw_rune_heart": "An upgrade of a mechanized heart. While it no longer allows the implementation of multiple upgrades, it can be infused with runes using the rune infuser.",
+    "tooltip.cyberspells.cw_rune_leg_left": "An upgrade of a mechanized leg. While it no longer allows the implementation of multiple upgrades, it can be infused with runes using the rune infuser.",
+    "tooltip.cyberspells.cw_rune_leg_right": "An upgrade of a mechanized leg. While it no longer allows the implementation of multiple upgrades, it can be infused with runes using the rune infuser.",
     "tooltip.cyberspells.rune_infuser": "A machine that allows so that members enhanced with arcane ingot are infused with runes."
 }

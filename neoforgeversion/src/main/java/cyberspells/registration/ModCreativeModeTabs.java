@@ -16,15 +16,24 @@ public class ModCreativeModeTabs {
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> CYBER_ADDON_TAB = CREATIVE_MODE_TABS.register(
             "cyber_addon_tab",
             () -> CreativeModeTab.builder()
-                    .icon(() -> new ItemStack(ModItems.RUNE_HEART.get()))
+                    .icon(() -> new ItemStack(ModItems.RUNE_INFUSER.get()))
                     .title(Component.translatable("creativetab.cyber_addon_tab"))
                     .displayItems((pParameters, pOutput) -> {
-                        pOutput.accept(ModItems.RUNE_ARM_LEFT.get());
-                        pOutput.accept(ModItems.RUNE_ARM_RIGHT.get());
-                        pOutput.accept(ModItems.RUNE_LEG_LEFT.get());
-                        pOutput.accept(ModItems.RUNE_LEG_RIGHT.get());
-                        pOutput.accept(ModItems.RUNE_HEART.get());
-                        pOutput.accept(ModBlocks.RUNE_INFUSER.get());
+                        pOutput.accept(ModItems.RUNE_INFUSER.get());
+                        if (net.neoforged.fml.ModList.get().isLoaded("createcybernetics")) {
+                            pOutput.accept(ModItems.CCItems.RUNE_ARM_LEFT.get());
+                            pOutput.accept(ModItems.CCItems.RUNE_ARM_RIGHT.get());
+                            pOutput.accept(ModItems.CCItems.RUNE_LEG_LEFT.get());
+                            pOutput.accept(ModItems.CCItems.RUNE_LEG_RIGHT.get());
+                            pOutput.accept(ModItems.CCItems.RUNE_HEART.get());
+                        }
+                        if (net.neoforged.fml.ModList.get().isLoaded("cyber_ware_port")) {
+                            pOutput.accept(ModItems.CWItems.CW_RUNE_ARM_LEFT.get());
+                            pOutput.accept(ModItems.CWItems.CW_RUNE_ARM_RIGHT.get());
+                            pOutput.accept(ModItems.CWItems.CW_RUNE_LEG_LEFT.get());
+                            pOutput.accept(ModItems.CWItems.CW_RUNE_LEG_RIGHT.get());
+                            pOutput.accept(ModItems.CWItems.CW_RUNE_HEART.get());
+                        }
                     })
                     .build());
 

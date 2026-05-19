@@ -1,14 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
-  "neoforge:conditions": [
-    {
-      "type": "neoforge:mod_loaded",
-      "modid": "createcybernetics"
-    }
-  ],
   "key": {
     "X": {
-      "item": "createcybernetics:robosurgeon"
+      "item": "cyber_ware_port:cyberlimbs_cyberleg_left"
     },
     "A": {
       "item": "irons_spellbooks:arcane_ingot"
@@ -21,6 +15,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "cyberspells:rune_infuser"
+    "id": "cyberspells:cw_rune_leg_left"
   }
 }

@@ -103,8 +103,6 @@ public class RuneInfuserBlockEntity extends BlockEntity implements MenuProvider 
         java.util.List<String> runes = new java.util.ArrayList<>();
         int maxSlots = runeItem.getMaxRuneSlots();
 
-        net.minecraft.world.item.component.ItemAttributeModifiers.Builder modifierBuilder = net.minecraft.world.item.component.ItemAttributeModifiers
-                .builder();
 
         for (int i = 1; i <= 5; i++) {
             ItemStack runeStack = itemHandler.getStackInSlot(i);
@@ -118,16 +116,9 @@ public class RuneInfuserBlockEntity extends BlockEntity implements MenuProvider 
             }
         }
 
-        // Add attributes for all collected runes after the list is populated
-        for (int i = 0; i < runes.size(); i++) {
-            String runeId = runes.get(i);
-            cyberspells.logic.RuneAttributeManager.addAttributes(modifierBuilder, runeId, String.valueOf(i));
-        }
-
         if (!runes.isEmpty()) {
             ItemStack result = cyberware.copy();
             result.set(cyberspells.registration.ModDataComponents.RUNES.get(), runes);
-            result.set(net.minecraft.core.component.DataComponents.ATTRIBUTE_MODIFIERS, modifierBuilder.build());
             itemHandler.setStackInSlot(6, result);
         } else {
             itemHandler.setStackInSlot(6, ItemStack.EMPTY);

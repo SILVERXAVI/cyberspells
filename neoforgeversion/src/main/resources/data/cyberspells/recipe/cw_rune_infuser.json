@@ -3,12 +3,12 @@
   "neoforge:conditions": [
     {
       "type": "neoforge:mod_loaded",
-      "modid": "createcybernetics"
+      "modid": "cyber_ware_port"
     }
   ],
   "key": {
     "X": {
-      "item": "createcybernetics:robosurgeon"
+      "item": "cyber_ware_port:robo_surgeon"
     },
     "A": {
       "item": "irons_spellbooks:arcane_ingot"
