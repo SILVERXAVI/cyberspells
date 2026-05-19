@@ -1,0 +1,41 @@
+# Gradle files
+.gradle/
+build/
+bin/
+out/
+neoforgeversion/.gradle/
+neoforgeversion/build/
+
+# IDE files
+.vscode/
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Custom decompiled / extraction / temp folders from modding/compilation
+neoforgeversion/decompiled_src/
+neoforgeversion/decompiled_src_full/
+neoforgeversion/decompiled_new/
+neoforgeversion/createcybernetics_extracted/
+neoforgeversion/createcybernetics_full_extracted/
+neoforgeversion/temp_043/
+neoforgeversion/temp_cyber/
+neoforgeversion/temp_inspect/
+
+# Temporary and log files
+*.log
+*.txt
+*.zip
+*.class
+CyberDump*
+
+# Reference Java files in roots that aren't source code
+neoforgeversion/basecyberware.java
+neoforgeversion/skin_manager.java
+neoforgeversion/cfr-0.152.jar
+neoforgeversion/analyze_texture.py
+
+# Keep Gradle wrapper jar
+!gradle/wrapper/gradle-wrapper.jar
+!neoforgeversion/gradle/wrapper/gradle-wrapper.jar

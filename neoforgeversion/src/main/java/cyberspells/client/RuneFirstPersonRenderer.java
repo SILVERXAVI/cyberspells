@@ -71,51 +71,85 @@ public class RuneFirstPersonRenderer {
 
                 VertexConsumer vc = buffer.getBuffer(RenderType.entityTranslucent(texture));
 
+                // Preservation and reset of model state to prevent misalignment
+                float prevAttackTime = model.attackTime;
+                boolean prevCrouching = model.crouching;
+                float prevSwimAmount = model.swimAmount;
+                net.minecraft.client.model.HumanoidModel.ArmPose prevRightPose = model.rightArmPose;
+                net.minecraft.client.model.HumanoidModel.ArmPose prevLeftPose = model.leftArmPose;
+                boolean prevRightArmVis = model.rightArm.visible;
+                boolean prevRightSleeveVis = model.rightSleeve.visible;
+                boolean prevLeftArmVis = model.leftArm.visible;
+                boolean prevLeftSleeveVis = model.leftSleeve.visible;
+
                 poseStack.pushPose();
-                // Reduced scale to 1.002F to prevent the "separation" gap caused by 1.1F
-                poseStack.scale(1.002F, 1.002F, 1.002F);
+                try {
+                    poseStack.scale(1.002F, 1.002F, 1.002F);
 
-                armPart.render(poseStack, vc, packedLight, OverlayTexture.NO_OVERLAY, -1);
-                sleevePart.render(poseStack, vc, packedLight, OverlayTexture.NO_OVERLAY, -1);
+                    model.attackTime = 0.0f;
+                    model.crouching = false;
+                    model.swimAmount = 0.0f;
+                    model.rightArmPose = net.minecraft.client.model.HumanoidModel.ArmPose.EMPTY;
+                    model.leftArmPose = net.minecraft.client.model.HumanoidModel.ArmPose.EMPTY;
+                    
+                    model.rightArm.visible = (arm == HumanoidArm.RIGHT);
+                    model.rightSleeve.visible = (arm == HumanoidArm.RIGHT);
+                    model.leftArm.visible = (arm == HumanoidArm.LEFT);
+                    model.leftSleeve.visible = (arm == HumanoidArm.LEFT);
 
-                // DYE TINT PASS
-                if (stack.has(DataComponents.DYED_COLOR)) {
-                    net.minecraft.world.item.component.DyedItemColor dyedColor = stack.get(DataComponents.DYED_COLOR);
-                    if (dyedColor != null) {
-                        int color = dyedColor.rgb() | 0xFF000000;
-                        ResourceLocation dyeTexture = ResourceLocation.fromNamespaceAndPath(CyberSpellsMod.MODID,
-                                "textures/entity/skin/rune_" + side + modelSuffix + "_dye.png");
-                        VertexConsumer dyeConsumer = buffer.getBuffer(RenderType.entityTranslucent(dyeTexture));
-                        armPart.render(poseStack, dyeConsumer, packedLight, OverlayTexture.NO_OVERLAY, color);
-                        sleevePart.render(poseStack, dyeConsumer, packedLight, OverlayTexture.NO_OVERLAY, color);
+                    model.setupAnim(player, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+
+                    armPart.render(poseStack, vc, packedLight, OverlayTexture.NO_OVERLAY, -1);
+                    sleevePart.render(poseStack, vc, packedLight, OverlayTexture.NO_OVERLAY, -1);
+
+                    // DYE TINT PASS
+                    if (stack.has(DataComponents.DYED_COLOR)) {
+                        net.minecraft.world.item.component.DyedItemColor dyedColor = stack.get(DataComponents.DYED_COLOR);
+                        if (dyedColor != null) {
+                            int color = dyedColor.rgb() | 0xFF000000;
+                            ResourceLocation dyeTexture = ResourceLocation.fromNamespaceAndPath(CyberSpellsMod.MODID,
+                                    "textures/entity/skin/rune_" + side + modelSuffix + "_dye.png");
+                            VertexConsumer dyeConsumer = buffer.getBuffer(RenderType.entityTranslucent(dyeTexture));
+                            armPart.render(poseStack, dyeConsumer, packedLight, OverlayTexture.NO_OVERLAY, color);
+                            sleevePart.render(poseStack, dyeConsumer, packedLight, OverlayTexture.NO_OVERLAY, color);
+                        }
                     }
-                }
 
-                // ARMOR TRIM PASS
-                ArmorTrim trim = stack.get(DataComponents.TRIM);
-                if (trim != null) {
-                    String patternName = trim.pattern().value().assetId().getPath();
-                    int color = com.perigrine3.createcybernetics.client.TrimColorPresets.colorFor(trim.material());
-                    if (color != -1) {
-                        color = color | 0xFF000000;
-                        String trimPart = side + (slim ? "_slim" : "_wide");
-                        ResourceLocation trimLoc = ResourceLocation.fromNamespaceAndPath("createcybernetics",
-                                "textures/entity/trims/" + patternName + "_" + trimPart + ".png");
-                        VertexConsumer trimConsumer = buffer.getBuffer(RenderType.entityTranslucent(trimLoc));
-                        armPart.render(poseStack, trimConsumer, packedLight, OverlayTexture.NO_OVERLAY, color);
-                        sleevePart.render(poseStack, trimConsumer, packedLight, OverlayTexture.NO_OVERLAY, color);
+                    // ARMOR TRIM PASS
+                    ArmorTrim trim = stack.get(DataComponents.TRIM);
+                    if (trim != null) {
+                        String patternName = trim.pattern().value().assetId().getPath();
+                        int color = com.perigrine3.createcybernetics.client.TrimColorPresets.colorFor(trim.material());
+                        if (color != -1) {
+                            color = color | 0xFF000000;
+                            String trimPart = side + (slim ? "_slim" : "_wide");
+                            ResourceLocation trimLoc = ResourceLocation.fromNamespaceAndPath("createcybernetics",
+                                    "textures/entity/trims/" + patternName + "_" + trimPart + ".png");
+                            VertexConsumer trimConsumer = buffer.getBuffer(RenderType.entityTranslucent(trimLoc));
+                            armPart.render(poseStack, trimConsumer, packedLight, OverlayTexture.NO_OVERLAY, color);
+                            sleevePart.render(poseStack, trimConsumer, packedLight, OverlayTexture.NO_OVERLAY, color);
+                        }
                     }
-                }
 
-                // ENCHANTMENT GLINT PASS
-                List<String> runes = ((RuneHolder) stack.getItem()).getRunes(stack);
-                if (runes != null && !runes.isEmpty()) {
-                    VertexConsumer glintConsumer = buffer.getBuffer(RenderType.entityGlint());
-                    armPart.render(poseStack, glintConsumer, packedLight, OverlayTexture.NO_OVERLAY, -1);
-                    sleevePart.render(poseStack, glintConsumer, packedLight, OverlayTexture.NO_OVERLAY, -1);
+                    // ENCHANTMENT GLINT PASS
+                    List<String> runes = ((RuneHolder) stack.getItem()).getRunes(stack);
+                    if (runes != null && !runes.isEmpty()) {
+                        VertexConsumer glintConsumer = buffer.getBuffer(RenderType.entityGlint());
+                        armPart.render(poseStack, glintConsumer, packedLight, OverlayTexture.NO_OVERLAY, -1);
+                        sleevePart.render(poseStack, glintConsumer, packedLight, OverlayTexture.NO_OVERLAY, -1);
+                    }
+                } finally {
+                    model.attackTime = prevAttackTime;
+                    model.crouching = prevCrouching;
+                    model.swimAmount = prevSwimAmount;
+                    model.rightArmPose = prevRightPose;
+                    model.leftArmPose = prevLeftPose;
+                    model.rightArm.visible = prevRightArmVis;
+                    model.rightSleeve.visible = prevRightSleeveVis;
+                    model.leftArm.visible = prevLeftArmVis;
+                    model.leftSleeve.visible = prevLeftSleeveVis;
+                    poseStack.popPose();
                 }
-
-                poseStack.popPose();
             }
         }
     }

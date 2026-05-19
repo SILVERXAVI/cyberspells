@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "": {
-      "model": "sync:block/shell_constructor"
-    }
-  }
-}

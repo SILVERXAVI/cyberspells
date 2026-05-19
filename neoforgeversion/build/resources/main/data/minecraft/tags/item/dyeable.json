@@ -1,9 +1,0 @@
-{
-    "replace": false,
-    "values": [
-        "cyberspells:rune_arm_left",
-        "cyberspells:rune_arm_right",
-        "cyberspells:rune_leg_left",
-        "cyberspells:rune_leg_right"
-    ]
-}

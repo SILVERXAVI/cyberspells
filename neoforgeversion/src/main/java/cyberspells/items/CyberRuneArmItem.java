@@ -1,13 +1,13 @@
 package cyberspells.items;
 
 import com.perigrine3.createcybernetics.api.CyberwareSlot;
-import com.perigrine3.createcybernetics.item.cyberware.CyberarmItem;
+import com.perigrine3.createcybernetics.item.cyberware.arm.CyberarmItem;
 import cyberspells.config.CyberSpellsConfig;
 import cyberspells.logic.RuneAttributeManager;
 import cyberspells.registration.ModDataComponents;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import cyberspells.CyberSpellsMod;
+import net.minecraft.world.entity.LivingEntity;
 import java.util.List;
 import java.util.Set;
 
@@ -18,6 +18,16 @@ public class CyberRuneArmItem extends CyberarmItem implements RuneHolder {
         super(properties, 10,
                 partName.contains("left") ? CyberwareSlot.LARM : CyberwareSlot.RARM);
         this.partName = partName;
+    }
+
+    @Override
+    public boolean requiresEnergyToFunction(LivingEntity entity, ItemStack installedStack, CyberwareSlot slot) {
+        return false;
+    }
+
+    @Override
+    public int getEnergyUsedPerTick(LivingEntity entity, ItemStack installedStack, CyberwareSlot slot) {
+        return 0;
     }
 
     @Override
@@ -46,18 +56,18 @@ public class CyberRuneArmItem extends CyberarmItem implements RuneHolder {
     }
 
     @Override
-    public void onTick(Player player, ItemStack stack, CyberwareSlot slot, int slotIndex) {
-        super.onTick(player, stack, slot, slotIndex);
+    public void onTick(LivingEntity entity, ItemStack stack, CyberwareSlot slot, int slotIndex) {
+        super.onTick(entity, stack, slot, slotIndex);
 
-        if (!player.level().isClientSide) {
+        if (!entity.level().isClientSide && entity instanceof Player player) {
             RuneAttributeManager.manageAttributes(player, stack, partName);
         }
     }
 
     @Override
-    public void onRemoved(Player player) {
-        super.onRemoved(player);
-        if (!player.level().isClientSide) {
+    public void onRemoved(LivingEntity entity) {
+        super.onRemoved(entity);
+        if (!entity.level().isClientSide && entity instanceof Player player) {
             RuneAttributeManager.removeAttributes(player, partName);
         }
     }
