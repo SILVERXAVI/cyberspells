@@ -2,7 +2,6 @@ ________________________________________________________________________________
 
 	mod creado por silverxavier, actualmente proporciona:
 
-	- compat between cyberware and iros spells
-	- compat between cyberware and vampyrism
+	- compat between cyberware:reforge and createcybernetics with iros spells
 
 ___________________________________________________________________________________________
