@@ -39,3 +39,8 @@ neoforgeversion/analyze_texture.py
 # Keep Gradle wrapper jar
 !gradle/wrapper/gradle-wrapper.jar
 !neoforgeversion/gradle/wrapper/gradle-wrapper.jar
+
+# Dependency library jars and decompile output
+neoforgeversion/libs/*.jar
+mods para descompilar/
+
