@@ -1,7 +1,0 @@
-{
-  "message_id": "createcybernetics.cyberware_surgery",
-  "scaling": "never",
-  "exhaustion": 0.75,
-  "effects": "hurt",
-  "death_message_type": "default"
-}

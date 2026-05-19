@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "createcybernetics:block/smooth_titanium",
-    "side": "createcybernetics:block/titanium_clad_copper",
-    "top": "createcybernetics:block/smooth_titanium"
-  }
-}

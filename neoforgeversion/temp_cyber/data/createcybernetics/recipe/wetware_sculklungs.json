@@ -1,8 +1,0 @@
-{
-  "type": "createcybernetics:grafting_table",
-  "wetware": [
-    { "item": "createcybernetics:bodypart_lungs" },
-    { "item": "createcybernetics:bodypart_wardenesophagus" }
-  ],
-  "result": { "id": "createcybernetics:wetware_sculklungs", "count": 1 }
-}

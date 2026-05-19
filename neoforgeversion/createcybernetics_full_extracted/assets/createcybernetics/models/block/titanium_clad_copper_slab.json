@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "createcybernetics:block/smooth_titanium",
-    "side": "createcybernetics:block/smooth_titanium",
-    "top": "createcybernetics:block/titanium_clad_copper"
-  }
-}
