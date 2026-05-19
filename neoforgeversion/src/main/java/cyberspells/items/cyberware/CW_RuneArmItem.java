@@ -54,4 +54,10 @@ public class CW_RuneArmItem extends CyberwareItem implements RuneHolder {
         }
         return map;
     }
+
+    @Override
+    public void appendHoverText(ItemStack stack, net.minecraft.world.item.Item.TooltipContext context, List<net.minecraft.network.chat.Component> tooltipComponents, net.minecraft.world.item.TooltipFlag tooltipFlag) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
+        cyberspells.logic.RuneAttributeManager.appendTooltip(stack, tooltipComponents);
+    }
 }
