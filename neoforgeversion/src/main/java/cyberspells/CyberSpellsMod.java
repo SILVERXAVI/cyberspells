@@ -23,4 +23,20 @@ public class CyberSpellsMod {
 
         System.out.println("CyberSpells for NeoForge 1.21.1 initialized!");
     }
+
+    @net.neoforged.fml.common.EventBusSubscriber(modid = CyberSpellsMod.MODID, bus = net.neoforged.fml.common.EventBusSubscriber.Bus.MOD, value = net.neoforged.api.distmarker.Dist.CLIENT)
+    public static class ClientModEvents {
+        @net.neoforged.bus.api.SubscribeEvent
+        public static void onClientSetup(net.neoforged.fml.event.lifecycle.FMLClientSetupEvent event) {
+            if (net.neoforged.fml.ModList.get().isLoaded("createcybernetics")) {
+                CCRendererRegistrar.register();
+            }
+        }
+    }
+
+    public static class CCRendererRegistrar {
+        public static void register() {
+            net.neoforged.neoforge.common.NeoForge.EVENT_BUS.register(cyberspells.client.RuneFirstPersonRenderer.class);
+        }
+    }
 }

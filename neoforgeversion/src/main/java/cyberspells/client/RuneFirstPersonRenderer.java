@@ -28,7 +28,6 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RenderArmEvent;
 
-@EventBusSubscriber(modid = CyberSpellsMod.MODID, bus = EventBusSubscriber.Bus.GAME, value = Dist.CLIENT)
 public class RuneFirstPersonRenderer {
 
     @SubscribeEvent
