@@ -21,6 +21,8 @@ public class CyberSpellsMod {
         // Register Config (NeoForge pattern)
         container.registerConfig(ModConfig.Type.COMMON, cyberspells.config.CyberSpellsConfig.SPEC);
 
+        NeoForge.EVENT_BUS.register(cyberspells.logic.RuneSpellEventHandler.class);
+
         System.out.println("CyberSpells for NeoForge 1.21.1 initialized!");
     }
 

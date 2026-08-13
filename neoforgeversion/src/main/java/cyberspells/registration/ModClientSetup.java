@@ -9,7 +9,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import cyberspells.CyberSpellsMod;
 import cyberspells.client.RuneInfuserScreen;
-import cyberspells.client.RuneSkinLayer;
+
 
 @EventBusSubscriber(modid = CyberSpellsMod.MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModClientSetup {
@@ -20,11 +20,20 @@ public class ModClientSetup {
 
     @SubscribeEvent
     public static void addLayers(EntityRenderersEvent.AddLayers event) {
+        boolean ccLoaded = net.neoforged.fml.ModList.get().isLoaded("createcybernetics");
         for (PlayerSkin.Model skinModel : event.getSkins()) {
             PlayerRenderer renderer = event.getSkin(skinModel);
             if (renderer != null) {
-                renderer.addLayer(new RuneSkinLayer(renderer));
+                if (ccLoaded) {
+                    CCLayerRegistrar.register(renderer);
+                }
             }
+        }
+    }
+
+    private static class CCLayerRegistrar {
+        static void register(PlayerRenderer renderer) {
+            renderer.addLayer(new cyberspells.client.RuneSkinLayer(renderer));
         }
     }
 }

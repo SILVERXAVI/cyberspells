@@ -108,10 +108,22 @@ public class RuneInfuserBlockEntity extends BlockEntity implements MenuProvider 
             ItemStack runeStack = itemHandler.getStackInSlot(i);
             if (!runeStack.isEmpty()) {
                 if (runes.size() < maxSlots) {
-                    net.minecraft.resources.ResourceLocation runeLoc = net.minecraft.core.registries.BuiltInRegistries.ITEM
-                            .getKey(runeStack.getItem());
-                    String runeId = runeLoc.toString();
-                    runes.add(runeId);
+                    if (io.redspace.ironsspellbooks.api.spells.ISpellContainer.isSpellContainer(runeStack)) {
+                        io.redspace.ironsspellbooks.api.spells.ISpellContainer container = io.redspace.ironsspellbooks.api.spells.ISpellContainer.get(runeStack);
+                        if (container != null && !container.isEmpty()) {
+                            io.redspace.ironsspellbooks.api.spells.SpellData spellData = container.getSpellAtIndex(0);
+                            if (spellData != null && spellData.getSpell() != null && !spellData.getSpell().equals(io.redspace.ironsspellbooks.api.registry.SpellRegistry.none())) {
+                                String spellId = spellData.getSpell().getSpellId();
+                                int level = spellData.getLevel();
+                                runes.add("spell:" + spellId + ":" + level);
+                            }
+                        }
+                    } else {
+                        net.minecraft.resources.ResourceLocation runeLoc = net.minecraft.core.registries.BuiltInRegistries.ITEM
+                                .getKey(runeStack.getItem());
+                        String runeId = runeLoc.toString();
+                        runes.add(runeId);
+                    }
                 }
             }
         }

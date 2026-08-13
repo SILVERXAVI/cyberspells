@@ -95,23 +95,38 @@ public class RuneAttributeManager {
                 if (stack.getItem() instanceof cyberspells.items.RuneHolder holder) {
                         List<String> runes = holder.getRunes(stack);
                         if (!runes.isEmpty()) {
-                                tooltip.add(Component.literal("§6Runes:"));
+                                tooltip.add(Component.literal("§6Runes & Hechizos:"));
                                 for (String runeId : runes) {
-                                        String name = RUNE_TO_NAME.getOrDefault(runeId, runeId);
-                                        tooltip.add(Component.literal(" §7- " + name));
+                                        if (runeId.startsWith("spell:")) {
+                                                String[] parts = runeId.split(":");
+                                                if (parts.length >= 3) {
+                                                        String spellId = parts[1] + (parts.length >= 4 ? ":" + parts[2] : "");
+                                                        int level = 1;
+                                                        try {
+                                                                level = Integer.parseInt(parts[parts.length - 1]);
+                                                        } catch (Exception ignored) {}
+                                                        io.redspace.ironsspellbooks.api.spells.AbstractSpell spell = io.redspace.ironsspellbooks.api.registry.SpellRegistry.getSpell(spellId);
+                                                        String spellName = (spell != null && !spell.equals(io.redspace.ironsspellbooks.api.registry.SpellRegistry.none()))
+                                                                ? spell.getSpellName() : spellId;
+                                                        tooltip.add(Component.literal(" §d✨ Hechizo: " + spellName + " (Niv. " + level + ")"));
+                                                }
+                                        } else {
+                                                String name = RUNE_TO_NAME.getOrDefault(runeId, runeId);
+                                                tooltip.add(Component.literal(" §7- " + name));
 
-                                        Map<String, net.neoforged.neoforge.common.ModConfigSpec.DoubleValue> attrs = RUNE_TO_ATTRIBUTES
-                                                        .get(runeId);
-                                        if (attrs != null) {
-                                                for (Map.Entry<String, net.neoforged.neoforge.common.ModConfigSpec.DoubleValue> entry : attrs
-                                                                .entrySet()) {
-                                                        String attrName = entry.getKey()
-                                                                        .replace("irons_spellbooks:", "")
-                                                                        .replace("_", " ");
-                                                        double val = entry.getValue().get();
-                                                        String unit = entry.getKey().contains("max_mana") ? "" : "%";
-                                                        tooltip.add(Component.literal(
-                                                                        "   §8" + attrName + ": §a+" + val + unit));
+                                                Map<String, net.neoforged.neoforge.common.ModConfigSpec.DoubleValue> attrs = RUNE_TO_ATTRIBUTES
+                                                                .get(runeId);
+                                                if (attrs != null) {
+                                                        for (Map.Entry<String, net.neoforged.neoforge.common.ModConfigSpec.DoubleValue> entry : attrs
+                                                                        .entrySet()) {
+                                                                String attrName = entry.getKey()
+                                                                                .replace("irons_spellbooks:", "")
+                                                                                .replace("_", " ");
+                                                                double val = entry.getValue().get();
+                                                                String unit = entry.getKey().contains("max_mana") ? "" : "%";
+                                                                tooltip.add(Component.literal(
+                                                                                "   §8" + attrName + ": §a+" + val + unit));
+                                                        }
                                                 }
                                         }
                                 }
