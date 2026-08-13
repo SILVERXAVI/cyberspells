@@ -12,21 +12,19 @@ public class RuneSpellEventHandler {
     @SubscribeEvent
     public static void onSpellSelection(io.redspace.ironsspellbooks.api.magic.SpellSelectionManager.SpellSelectionEvent event) {
         Player player = event.getEntity();
-        if (player == null || player.level().isClientSide)
+        if (player == null)
             return;
 
-        int index = 100;
-
         if (ModList.get().isLoaded("createcybernetics")) {
-            index = addCCSpells(player, event, index);
+            addCCSpells(player, event);
         }
 
         if (ModList.get().isLoaded("cyber_ware_port")) {
-            index = addCWSpells(player, event, index);
+            addCWSpells(player, event);
         }
     }
 
-    private static int addCCSpells(Player player, io.redspace.ironsspellbooks.api.magic.SpellSelectionManager.SpellSelectionEvent event, int index) {
+    private static void addCCSpells(Player player, io.redspace.ironsspellbooks.api.magic.SpellSelectionManager.SpellSelectionEvent event) {
         try {
             com.perigrine3.createcybernetics.common.capabilities.PlayerCyberwareData data = player.getData(com.perigrine3.createcybernetics.common.capabilities.ModAttachments.CYBERWARE);
             if (data != null) {
@@ -35,16 +33,15 @@ public class RuneSpellEventHandler {
                     if (installed != null) {
                         ItemStack stack = installed.getItem();
                         if (stack != null && !stack.isEmpty() && stack.getItem() instanceof RuneHolder holder) {
-                            index = processStackSpells(stack, holder, slot.name().toLowerCase(), event, index);
+                            processStackSpells(stack, holder, slot.name().toLowerCase(), event);
                         }
                     }
                 }
             }
         } catch (Throwable ignored) {}
-        return index;
     }
 
-    private static int addCWSpells(Player player, io.redspace.ironsspellbooks.api.magic.SpellSelectionManager.SpellSelectionEvent event, int index) {
+    private static void addCWSpells(Player player, io.redspace.ironsspellbooks.api.magic.SpellSelectionManager.SpellSelectionEvent event) {
         try {
             com.maxwell.cyber_ware_port.common.capability.CyberwareUserData data = player.getData(com.maxwell.cyber_ware_port.common.capability.CyberwareCapabilityProvider.CYBERWARE_DATA);
             if (data != null && data.getInstalledCyberware() != null) {
@@ -52,17 +49,17 @@ public class RuneSpellEventHandler {
                 for (int i = 0; i < handler.getSlots(); i++) {
                     ItemStack stack = handler.getStackInSlot(i);
                     if (stack != null && !stack.isEmpty() && stack.getItem() instanceof RuneHolder holder) {
-                        index = processStackSpells(stack, holder, "cw_" + i, event, index);
+                        processStackSpells(stack, holder, "cw_" + i, event);
                     }
                 }
             }
         } catch (Throwable ignored) {}
-        return index;
     }
 
-    private static int processStackSpells(ItemStack stack, RuneHolder holder, String slotName, io.redspace.ironsspellbooks.api.magic.SpellSelectionManager.SpellSelectionEvent event, int index) {
+    private static void processStackSpells(ItemStack stack, RuneHolder holder, String slotName, io.redspace.ironsspellbooks.api.magic.SpellSelectionManager.SpellSelectionEvent event) {
         List<String> runes = holder.getRunes(stack);
         int maxSlots = holder.getMaxRuneSlots();
+        int localIndex = 0;
         for (int i = 0; i < runes.size() && i < maxSlots; i++) {
             String runeId = runes.get(i);
             if (runeId.startsWith("spell:")) {
@@ -76,11 +73,10 @@ public class RuneSpellEventHandler {
                     io.redspace.ironsspellbooks.api.spells.AbstractSpell spell = io.redspace.ironsspellbooks.api.registry.SpellRegistry.getSpell(spellId);
                     if (spell != null && !spell.equals(io.redspace.ironsspellbooks.api.registry.SpellRegistry.none())) {
                         io.redspace.ironsspellbooks.api.spells.SpellData spellData = new io.redspace.ironsspellbooks.api.spells.SpellData(spell, level);
-                        event.addSelectionOption(spellData, "cyberware_" + slotName, index++);
+                        event.addSelectionOption(spellData, "cyberware_" + slotName, localIndex++);
                     }
                 }
             }
         }
-        return index;
     }
 }

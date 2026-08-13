@@ -1,0 +1,46 @@
+/*
+ * Decompiled with CFR 0.152.
+ * 
+ * Could not load the following classes:
+ *  net.minecraft.resources.ResourceKey
+ *  net.minecraft.world.level.Level
+ *  net.minecraft.world.phys.Vec3
+ */
+package io.redspace.ironsspellbooks.entity.spells.portal;
+
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+
+public class PortalPos {
+    private final ResourceKey<Level> dimension;
+    private final Vec3 pos;
+    private final float rotation;
+
+    private PortalPos(ResourceKey<Level> dimension, Vec3 pos, float rotation) {
+        this.dimension = dimension;
+        this.pos = pos;
+        this.rotation = rotation;
+    }
+
+    public static PortalPos of(ResourceKey<Level> dimension, Vec3 pos, float rotation) {
+        return new PortalPos(dimension, pos, rotation);
+    }
+
+    public ResourceKey<Level> dimension() {
+        return this.dimension;
+    }
+
+    public Vec3 pos() {
+        return this.pos;
+    }
+
+    public float rotation() {
+        return this.rotation;
+    }
+
+    public String toString() {
+        return "PortalPos{" + String.valueOf(this.dimension) + " " + String.valueOf(this.pos) + "}";
+    }
+}
+
