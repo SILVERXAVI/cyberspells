@@ -17,6 +17,7 @@ public class CW_RuneLegItem extends CyberwareItem implements RuneHolder {
     public CW_RuneLegItem(int essenceCost, int slotId, String partName) {
         super(new CyberwareItem.Builder(essenceCost, slotId)
                 .bodyPart(partName.contains("left") ? BodyPartType.LEG_LEFT : BodyPartType.LEG_RIGHT)
+                .incompatible(partName.contains("left") ? com.maxwell.cyber_ware_port.init.ModItems.HUMAN_LEFT_LEG : com.maxwell.cyber_ware_port.init.ModItems.HUMAN_RIGHT_LEG)
                 .maxInstall(1));
         this.partName = partName;
     }

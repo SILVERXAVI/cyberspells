@@ -1,0 +1,15 @@
+/*
+ * Decompiled with CFR 0.152.
+ */
+package com.maxwell.cyber_ware_port.common.item.cyberware.arm;
+
+import com.maxwell.cyber_ware_port.common.block.robosurgeon.RobosurgeonBlockEntity;
+import com.maxwell.cyber_ware_port.common.item.base.CyberwareItem;
+
+public class FineManipulatorsItem
+extends CyberwareItem {
+    public FineManipulatorsItem() {
+        super(new CyberwareItem.Builder(2, RobosurgeonBlockEntity.SLOT_HANDS).maxInstall(1));
+    }
+}
+
