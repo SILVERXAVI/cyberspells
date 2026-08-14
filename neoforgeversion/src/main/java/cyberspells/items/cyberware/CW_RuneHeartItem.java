@@ -17,7 +17,6 @@ public class CW_RuneHeartItem extends CyberwareItem implements RuneHolder {
     public CW_RuneHeartItem(int essenceCost, int slotId, String partName) {
         super(new CyberwareItem.Builder(essenceCost, slotId)
                 .bodyPart(BodyPartType.HEART)
-                .incompatible(com.maxwell.cyber_ware_port.init.ModItems.HUMAN_HEART)
                 .maxInstall(1));
         this.partName = partName;
     }
